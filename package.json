@@ -6,8 +6,9 @@
 	"dependencies": {
 		"commander" : "1.0.4",
 		"async" : "0.1.22",
-		"mkdirp" : "0.3.4",
-		"underscore" : "1.4.0",
-		"CSSselect": "0.x"
+		"cheerio": "0.10.1",
+		"cheerio-select": "0.0.3",
+		"config": "0.4.17",
+		"jade": "0.27.5"
 	}
 }

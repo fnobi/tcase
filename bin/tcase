@@ -1,8 +1,18 @@
 #!/usr/bin/env node
 
-var commander = require('commander'),
+process.env.NODE_CONFIT_DIR = __dirname + '/../config/';
+
+var fs        = require('fs'),
+    path      = require('path'),
+
+    async     = require('async'),
+    commander = require('commander'),
+    config    = require('config'),
+
+    TCase     = require(__dirname + '/..'),
     pkg       = require(__dirname + '/../package.json'),
     version   = pkg.version;
+
 
 // コマンドライン引数読み込み
 commander
@@ -12,13 +22,21 @@ commander
 	.parse(process.argv);
 
 
-var url = commander.args.shift();
+var tcase = new TCase();
+var selector = commander.args.join(' ') || 't,i';
 
-// 引数無しならエラー終了
-if (!url) {
-	console.error('enter a jsdoit url or path.');
-	process.exit();
-}
 
-var jsGetIt = new JSGetIt(url);
-jsGetIt.download();
+TCase.sourceFiles(function (err, sourceFiles) {
+	if (err) {
+		throw new Error(err);
+	}
+
+	async.forEach(sourceFiles, function (sourceFile, callback) {
+		fs.readFile(sourceFile, 'utf8', function (err, content) {
+			tcase.addSource(content);
+			callback(err, true);
+		});
+	}, function (err, res) {
+		console.log(tcase.select(selector).format());
+	});
+});

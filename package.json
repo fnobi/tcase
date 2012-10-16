@@ -1,0 +1,13 @@
+{
+	"name": "tcase",
+	"version": "0.0.1",
+	"private": true,
+	"bin": "./bin/tcase",
+	"dependencies": {
+		"commander" : "1.0.4",
+		"async" : "0.1.22",
+		"mkdirp" : "0.3.4",
+		"underscore" : "1.4.0",
+		"CSSselect": "0.x"
+	}
+}

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-process.env.NODE_CONFIT_DIR = __dirname + '/../config/';
+process.env.NODE_CONFIG_DIR = __dirname + '/../config/';
 
 var fs        = require('fs'),
     path      = require('path'),

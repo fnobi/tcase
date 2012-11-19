@@ -23,7 +23,7 @@ commander
 
 
 var tcase = new TCase();
-var selector = commander.args.join(' ') || 't,i';
+var selector = commander.args.join(' > ') || 't';
 
 
 TCase.sourceFiles(function (err, sourceFiles) {

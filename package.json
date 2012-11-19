@@ -10,6 +10,6 @@
 		"cheerio-select": "0.0.3",
 		"config": "0.4.17",
 		"jade": "0.27.5",
-		"color": "*"
+		"colors": "*"
 	}
 }

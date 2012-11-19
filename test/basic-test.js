@@ -2,10 +2,10 @@ var buster = require('buster'),
     TCase  = require(__dirname + '/..');
 
 var samplejade = [
-	'home',
+	'c.home',
 	'  t 部屋の片付け',
 	'  i ゴミ箱を片づける',
-	'school',
+	'c.school',
 	'  t 宿題'
 ].join('\n');
 

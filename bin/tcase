@@ -1,42 +1,37 @@
 #!/usr/bin/env node
 
-process.env.NODE_CONFIG_DIR = __dirname + '/../config/';
-
-var fs        = require('fs'),
-    path      = require('path'),
-
-    async     = require('async'),
-    commander = require('commander'),
-    config    = require('config'),
+var commander = require('commander'),
 
     TCase     = require(__dirname + '/..'),
-    pkg       = require(__dirname + '/../package.json'),
-    version   = pkg.version;
-
+    version   = require(__dirname + '/../package.json').version,
+    filelist  = require(__dirname + '/../lib/filelist');
 
 // コマンドライン引数読み込み
 commander
 	.version(version)
-	.option('-o, --output [path]', 'output path')
-	.option('-a, --app', 'as .app file (with macgap)')
 	.parse(process.argv);
 
+var tcase;
+var command = 'select';
+if ((commander.args[0] || '').match(/^(ls|select)$/)) {
+	command = commander.args.shift();
+}
 
-var tcase = new TCase();
 var selector = commander.args.join(' ') || 't';
 
+if (command == 'select') {
+	// ファイルを結合して、sourceにする
+	filelist.concat(function (err, source) {
+		if (err) {
+			console.error(err);
+			return;
+		}
 
-TCase.sourceFiles(function (err, sourceFiles) {
-	if (err) {
-		throw new Error(err);
-	}
-
-	async.forEach(sourceFiles, function (sourceFile, callback) {
-		fs.readFile(sourceFile, 'utf8', function (err, content) {
-			tcase.addSource(content);
-			callback(err, true);
-		});
-	}, function (err, res) {
+		// TCaseを生成、selectの結果をformatして出力
+		tcase = new TCase(source);
 		console.log(tcase.select(selector).format());
 	});
-});
+} else if (command == 'ls') {
+	console.log(filelist.ls());
+}
+

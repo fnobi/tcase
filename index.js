@@ -1,13 +1,7 @@
 var fs       = require('fs'),
-    jade     = require('jade');
-
-var cheerio  = {
-	select : require('cheerio-select'),
-	parse  : require('cheerio')
-};
-var jsdom = require("jsdom");
-var ItemList = require(__dirname + '/lib/ItemList');
-
+    jade     = require('jade'),
+    jsdom    = require("jsdom"),
+    ItemList = require(__dirname + '/lib/ItemList');
 
 var TCase = function (source) {
 	this.xml = this.compile(source);

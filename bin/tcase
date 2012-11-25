@@ -29,7 +29,10 @@ if (command == 'select') {
 
 		// TCaseを生成、selectの結果をformatして出力
 		tcase = new TCase(source);
-		console.log(tcase.select(selector).format());
+		tcase.select(selector, function (err, itemlist) {
+			console.log(itemlist.format());
+		});
+
 	});
 } else if (command == 'ls') {
 	console.log(filelist.ls());

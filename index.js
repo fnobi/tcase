@@ -26,12 +26,6 @@ TCase.prototype.select = function (selector, callback) {
 			callback(null, new ItemList($(selector)));
 		}
 	);
-
-	// with cheerio-select ver.
-	// var dom = cheerio.parse(this.xml);
-	// var filteredDom = cheerio.select(selector, dom);
-
-	// return new ItemList(filteredDom);
 };
 
 module.exports = TCase;

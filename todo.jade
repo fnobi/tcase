@@ -1,0 +1,36 @@
+c.dev
+  c.tcase
+    t add-file $path
+      t 重複防止
+        t underscore
+      t カレントディレクトリも展開
+      i 意外と、相対パスを認めるというのも面白いかもしれない
+    t delete-file|rm $path
+    t re-file $selector $path
+      i select -o jade > $path でもいい、って説はある
+    t add-item|add [$selector] $type="t" $content
+
+    t selectorで指定して、直接編集
+      i re-fileとedit同時実行ということ
+
+    t commanderが合ってない気がする……
+
+    t 期限日をうまいこと取り入れる
+      t とりあえず、format表示のときに出して!
+      i 期限日が近いものは、実行するたびアラートとして出そう!!
+        i もちろんカスタマイズ可能にして…
+
+    t 「日付フィールド」に特殊な処理をかける
+      i 4桁なら年繰り返しとか
+      i TUEって入れると次の火曜日になるとか
+      i 「日付フィールド」はカスタマイズできる
+
+    t 各タグの役割はカスタマイズを自由にさせてあげたいなぁ
+
+    t マッチ数を出したい!
+      i ItemListの時点で覚えておく
+
+    t ItemListってSearchResultかもな
+    i 色分けの再考
+
+    t やっぱり設定ファイルは、jsonなりyamlのほうがよさそう

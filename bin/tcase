@@ -13,7 +13,7 @@ commander
 
 var tcase;
 var command = 'select';
-if ((commander.args[0] || '').match(/^(ls|select|add-file)$/)) {
+if ((commander.args[0] || '').match(/^(ls|select|add-file|remove-file|rm)$/)) {
 	command = commander.args.shift();
 }
 
@@ -36,8 +36,13 @@ if (command == 'select') {
 	});
 } else if (command == 'ls') {
 	console.log(filelist.ls());
+
 } else if (command == 'add-file') {
 	filelist.addFile(commander.args.shift());
+	console.log(filelist.ls());
+
+} else if (command == 'remove-file' || command == 'rm') {
+	filelist.removeFile(commander.args.shift());
 	console.log(filelist.ls());
 }
 

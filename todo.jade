@@ -2,10 +2,7 @@ c.dev
   c.tcase
     t add-file $path
       t 重複防止
-        t underscore
-      t カレントディレクトリも展開
-      i 意外と、相対パスを認めるというのも面白いかもしれない
-    t delete-file|rm $path
+
     t re-file $selector $path
       i select -o jade > $path でもいい、って説はある
     t add-item|add [$selector] $type="t" $content

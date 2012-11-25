@@ -1,7 +1,6 @@
 {
 	"name": "tcase",
 	"version": "0.0.1",
-	"private": true,
 	"bin": "./bin/tcase",
 	"dependencies": {
 		"commander" : "1.0.4",

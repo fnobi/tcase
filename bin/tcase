@@ -1,19 +1,23 @@
 #!/usr/bin/env node
 
 var commander = require('commander'),
+    _         = require('underscore'),
 
     TCase     = require(__dirname + '/..'),
     version   = require(__dirname + '/../package.json').version,
     filelist  = require(__dirname + '/../lib/filelist');
+
+var tcase;
+var commandList = ['select', 'ls','add-file', 'emove-file', 'rm', 'raw'];
 
 // コマンドライン引数読み込み
 commander
 	.version(version)
 	.parse(process.argv);
 
-var tcase;
-var command = 'select';
-if ((commander.args[0] || '').match(/^(ls|select|add-file|remove-file|rm)$/)) {
+var command = commandList[0];
+
+if (_.contains(commandList, (commander.args[0] || ''))) {
 	command = commander.args.shift();
 }
 
@@ -34,6 +38,17 @@ if (command == 'select') {
 		});
 
 	});
+} else if (command == 'raw') {
+	// ファイルを結合して、そのまま出力
+	filelist.concat(function (err, source) {
+		if (err) {
+			console.error(err);
+			return;
+		}
+
+		console.log(source);
+	});
+
 } else if (command == 'ls') {
 	console.log(filelist.ls());
 

@@ -1,13 +1,27 @@
 {
-	"name": "tcase",
-	"version": "0.0.1",
-	"bin": "./bin/tcase",
-	"dependencies": {
-		"commander" : "1.0.4",
-		"async" : "0.1.22",
-		"jsdom": "*",
-		"jade": "0.27.5",
-		"underscore": "*",
-		"colors": "*"
-	}
+  "name": "tcase",
+  "version": "0.0.1",
+  "bin": {
+    "tcase": "./bin/tcase"
+  },
+  "dependencies": {
+    "commander": "1.0.4",
+    "async": "0.1.22",
+    "jsdom": "*",
+    "jade": "0.27.5",
+    "underscore": "*",
+    "colors": "*"
+  },
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  },
+  "author": "Fujisawa Shin <shin@fnobi.com> (http://blog.fnobi.com/)",
+  "description": "task and idea management tool based on jade.",
+  "homepage": "http://github.com/fnobi/tcase",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/fnobi/tcase.git"
+  }
 }

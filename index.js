@@ -14,7 +14,7 @@ TCase.prototype.compile = function (source) {
 TCase.prototype.select = function (selector, callback) {
 	jsdom.env(
 		this.xml,
-		["http://code.jquery.com/jquery.js"],
+		[__dirname + '/lib/jquery-1.8.2.js'],
 		function(errors, window) {
 			var $ = window.$;
 			callback(null, new ItemList($(selector)));
